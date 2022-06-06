@@ -2,6 +2,15 @@
 name = "girlfriend"
 version = "0.1.0"
 edition = "2021"
+homepage = "https://uwussi.moe"
+repository = "https://github.com/uwussimo/girlfriend"
+description = "Girlfriend rewritten version on Rust"
+authors = ["UwUssimo Robinson <uwussimo@icloud.com> (https://uwussi.moe)"]
+keywords = ["girlfriend", "grass", "rewrite"]
+readme = "readme.md"
+categories = ["emulators", "simulation"]
+license = "MIT"
+exclude = ["target", ".github"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
