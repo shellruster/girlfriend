@@ -1,5 +1,4 @@
 use chrono::Datelike;
-use std::borrow::Borrow;
 
 #[derive(Debug, Clone)]
 pub struct User {
