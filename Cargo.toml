@@ -15,4 +15,6 @@ exclude = ["target", ".github"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+clap = "3.1.18"
 chrono = "0.4.19"
+rust-bert = "0.18.0"
