@@ -1,25 +1,31 @@
-use std::borrow::Borrow;
 use chrono::Datelike;
+use std::borrow::Borrow;
 
+#[derive(Debug, Clone)]
 pub struct User {
-    firstname: String,
-    lastname: String
+    pub firstname: String,
+    pub lastname: String,
 }
 
 impl User {
     pub fn new(first: &str, last: &str) -> Self {
         User {
             firstname: first.to_string(),
-            lastname: last.to_string()
+            lastname: last.to_string(),
         }
+    }
+
+    pub fn name(&self) -> String {
+        self.firstname.to_string()
     }
 }
 
+#[derive(Debug, Clone)]
 pub struct Girlfriend {
     firstname: String,
     lastname: String,
     age: i32,
-    owner: User
+    owner: User,
 }
 
 impl Girlfriend {
@@ -30,7 +36,7 @@ impl Girlfriend {
             firstname: String::from("Sara"),
             lastname: String::from("Marchiafava"),
             age: current_date.year() - 2022,
-            owner
+            owner,
         }
     }
 
@@ -39,8 +45,6 @@ impl Girlfriend {
     }
 
     pub fn talk(&self, message: &str) {
-        println!(
-            "{}: {}", self.firstname,message
-        )
+        print!("{}: {}", self.firstname, message)
     }
 }
