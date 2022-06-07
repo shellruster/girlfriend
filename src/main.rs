@@ -1,3 +1,8 @@
+use girlfriend::{Girlfriend, User};
+
 fn main() {
-    println!("Hello, girlfriend!");
+    let me = User::new("UwUssimo", "Robinson");
+    let gf = Girlfriend::new(me);
+
+    gf.talk("Hello!");
 }
