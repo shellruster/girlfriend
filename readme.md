@@ -1,2 +1,1 @@
-# girlfriend
-Rewritten version of girlfriend.js. 
+> This is just for scientific purposes only! May you rest in peace, Sara...
