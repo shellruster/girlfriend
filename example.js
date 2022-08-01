@@ -15,3 +15,7 @@ console.log("Read from a file", path, "contents:", contents);
 console.log("Removing file", path);
 runjs.removeFile(path);
 console.log("File removed");
+
+// TODO: Implement fetcher for girlfriend
+// const fetcher = await fetch("https://www.uwussi.moe/api/minecraft")
+// console.log(await fetcher.text())

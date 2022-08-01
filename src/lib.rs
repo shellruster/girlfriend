@@ -3,6 +3,8 @@ use deno_core::Extension;
 use deno_core::error::AnyError;
 use std::rc::Rc;
 
+const RUNTIME_JAVASCRIPT_CORE: &str = include_str!("./runtime.js");
+
 #[op]
 async fn op_read_file(path: String) -> Result<String, AnyError> {
     let contents = tokio::fs::read_to_string(path).await?;
@@ -35,7 +37,7 @@ pub async fn run_js(file_path: &str) -> Result<(), AnyError> {
         extensions: vec![runjs_extension],
         ..Default::default()
     });
-    const RUNTIME_JAVASCRIPT_CORE: &str = include_str!("./runtime.js");
+
     js_runtime
         .execute_script("[runjs:runtime.js]", RUNTIME_JAVASCRIPT_CORE)
         .unwrap();
