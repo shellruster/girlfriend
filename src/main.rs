@@ -1,23 +1,11 @@
-use girlfriend::{Girlfriend, User};
-use std::io;
-use std::io::{stdout, Write};
+use girlfriend::run_js;
 
 fn main() {
-    let me = User::new("UwUssimo", "Robinson");
-    let gf = Girlfriend::new(me.clone());
-
-    let chatter = me.firstname;
-
-    loop {
-        print!("{}: ", &chatter);
-        stdout().flush().unwrap();
-
-        let mut input = String::new();
-        match io::stdin().read_line(&mut input) {
-            Ok(_) => {
-                gf.talk(input.as_str());
-            }
-            Err(error) => print!("Error: {}", error),
-        }
+    let runtime = tokio::runtime::Builder::new_current_thread()
+        .enable_all()
+        .build()
+        .unwrap();
+    if let Err(error) = runtime.block_on(run_js("./example.js")) {
+        eprintln!("error: {}", error);
     }
 }

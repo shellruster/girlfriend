@@ -1,20 +1,18 @@
 [package]
 name = "girlfriend"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 homepage = "https://uwussi.moe"
 repository = "https://github.com/uwussimo/girlfriend"
-description = "Girlfriend rewritten version on Rust"
+description = "Girlfriend javascript for shell scripting"
 authors = ["UwUssimo Robinson <uwussimo@icloud.com> (https://uwussi.moe)"]
-keywords = ["girlfriend", "grass", "rewrite"]
+keywords = ["girlfriend", "javascript", "shell", "scripting"]
 readme = "readme.md"
 categories = ["emulators", "simulation"]
 license = "MIT"
 exclude = ["target", ".github"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 clap = "3.1.18"
-chrono = "0.4.19"
-rust-bert = "0.18.0"
+deno_core = "0.145.0"
+tokio = { version = "1.19.2", features = ["full"] }
