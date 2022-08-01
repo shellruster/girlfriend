@@ -1,49 +1,47 @@
-use chrono::Datelike;
+use deno_core::op;
+use deno_core::Extension;
+use deno_core::error::AnyError;
+use std::rc::Rc;
 
-#[derive(Debug, Clone)]
-pub struct User {
-    pub firstname: String,
-    pub lastname: String,
+#[op]
+async fn op_read_file(path: String) -> Result<String, AnyError> {
+    let contents = tokio::fs::read_to_string(path).await?;
+    Ok(contents)
 }
 
-impl User {
-    pub fn new(first: &str, last: &str) -> Self {
-        User {
-            firstname: first.to_string(),
-            lastname: last.to_string(),
-        }
-    }
-
-    pub fn name(&self) -> String {
-        self.firstname.to_string()
-    }
+#[op]
+async fn op_write_file(path: String, contents: String) -> Result<(), AnyError> {
+    tokio::fs::write(path, contents).await?;
+    Ok(())
 }
 
-#[derive(Debug, Clone)]
-pub struct Girlfriend {
-    firstname: String,
-    lastname: String,
-    age: i32,
-    owner: User,
+#[op]
+fn op_remove_file(path: String) -> Result<(), AnyError> {
+    std::fs::remove_file(path)?;
+    Ok(())
 }
 
-impl Girlfriend {
-    pub fn new(owner: User) -> Self {
-        let current_date = chrono::Utc::now();
+pub async fn run_js(file_path: &str) -> Result<(), AnyError> {
+    let main_module = deno_core::resolve_path(file_path)?;
+    let runjs_extension = Extension::builder()
+        .ops(vec![
+            op_read_file::decl(),
+            op_write_file::decl(),
+            op_remove_file::decl(),
+        ])
+        .build();
+    let mut js_runtime = deno_core::JsRuntime::new(deno_core::RuntimeOptions {
+        module_loader: Some(Rc::new(deno_core::FsModuleLoader)),
+        extensions: vec![runjs_extension],
+        ..Default::default()
+    });
+    const RUNTIME_JAVASCRIPT_CORE: &str = include_str!("./runtime.js");
+    js_runtime
+        .execute_script("[runjs:runtime.js]", RUNTIME_JAVASCRIPT_CORE)
+        .unwrap();
 
-        Girlfriend {
-            firstname: String::from("Sara"),
-            lastname: String::from("Marchiafava"),
-            age: current_date.year() - 2022,
-            owner,
-        }
-    }
-
-    pub fn owner(&self) -> &User {
-        &self.owner
-    }
-
-    pub fn talk(&self, message: &str) {
-        print!("{}: {}", self.firstname, message)
-    }
+    let mod_id = js_runtime.load_main_module(&main_module, None).await?;
+    let result = js_runtime.mod_evaluate(mod_id);
+    js_runtime.run_event_loop(false).await?;
+    result.await?
 }
