@@ -14,7 +14,7 @@
         },
     };
 
-    globalThis.runjs = {
+    globalThis.gf = {
         readFile: (path) => {
             return core.opAsync("op_read_file", path);
         },

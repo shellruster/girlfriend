@@ -1,11 +1,6 @@
-use girlfriend::run_js;
+use deno_core::error::AnyError;
 
-fn main() {
-    let runtime = tokio::runtime::Builder::new_current_thread()
-        .enable_all()
-        .build()
-        .unwrap();
-    if let Err(error) = runtime.block_on(run_js("./example.js")) {
-        eprintln!("error: {}", error);
-    }
+#[tokio::main]
+async fn main() -> Result<(), AnyError> {
+    runtime::start().await
 }
