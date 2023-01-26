@@ -2,7 +2,7 @@
 console.log("Hello world!");
 
 // Test API
-const some = await fetch("https://uwussi.moe/api")
+const some = await fetch("https://phoenixifier.jp/api")
 console.log(await some.json());
 
 // Global
