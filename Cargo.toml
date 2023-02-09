@@ -1,22 +1,12 @@
 [package]
 name = "girlfriend"
-version = "0.3.0"
+version = "0.1.0"
 edition = "2021"
-homepage = "https://uwussi.moe"
-repository = "https://github.com/uwussimo/girlfriend"
-description = "Javascript for shell scripting"
-authors = ["UwUssimo Robinson <uwussimo@icloud.com> (https://uwussi.moe)"]
-keywords = ["girlfriend", "javascript", "shell", "scripting"]
-readme = "readme.md"
-categories = ["emulators", "simulation"]
-license = "MIT"
-exclude = ["target", ".github"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-clap = "3.1.18"
-serde = { version = "1.0.140", features = ["derive"] }
-tokio = { version = "1.19.2", features = ["full"] }
-deno_runtime = "0.71.0"
-deno_core = "0.145.0"
-core = { version = "0.1.0", path = "./core" }
-runtime = { version = "0.1.0", path = "./runtime" }
+deno_ast = { version = "0.22.0", features = ["transpiling"] }
+deno_core = "0.171.0"
+reqwest = "0.11.14"
+tokio = { version = "1.25.0", features = ["full"] }
