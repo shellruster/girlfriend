@@ -1,5 +1,2 @@
 /target
-.idea/girlfriend.iml
-.idea/modules.xml
-.idea/vcs.xml
-Cargo.lock
+.idea
