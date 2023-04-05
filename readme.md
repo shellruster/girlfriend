@@ -22,8 +22,8 @@ TypeScript files.
 ```shellsession
 $ cargo run
     Finished dev [unoptimized + debuginfo] target(s) in 0.05s
-     Running `target/debug/runjs ./test.js`
-[out]: "Hello" "runjs!"
+     Running `target/debug/girlfriend ./test.js`
+[out]: "Hello" "girlfriend!"
 [err]: "Boom!"
 [err]: "Unable to read file" "./log.txt" {"code":"ENOENT"}
 [out]: "Read from a file" "./log.txt" "contents:" "I can write to a file."
