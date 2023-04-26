@@ -8,7 +8,7 @@ pub async fn girlfriend(file_path: &str) -> Result<(), AnyError> {
     let main_module = deno_core::resolve_path(file_path)?;
     let girlfriend_extension = Extension::builder("girlfriend")
         .esm(include_js_files!(
-            "./polyfill/runtime.js",
+            "./polyfill/core.js",
         ))
         .ops(vec![
             crate::file::read::op_read_file::decl(),

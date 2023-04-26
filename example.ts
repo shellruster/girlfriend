@@ -9,7 +9,7 @@ let content: string;
 
 // @ts-ignore
 content = await girlfriend.fetch(
-  "https://deno.land/std@0.177.0/examples/welcome.ts",
+  "https://raw.githubusercontent.com/phoenixifier/girlfriend/main/license",
 );
 
 console.log("Content from fetch", content);

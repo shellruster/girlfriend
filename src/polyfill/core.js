@@ -7,10 +7,10 @@ function argsToMessage(...args) {
 
 const console = {
   log: (...args) => {
-    core.print(`[out]: ${argsToMessage(...args)}\n`, false);
+    core.print(`[MESSAGE]: ${argsToMessage(...args)}\n`, false);
   },
   error: (...args) => {
-    core.print(`[err]: ${argsToMessage(...args)}\n`, true);
+    core.print(`[ERROR]: ${argsToMessage(...args)}\n`, true);
   },
 };
 
