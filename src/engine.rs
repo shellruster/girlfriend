@@ -13,8 +13,11 @@ pub async fn girlfriend(file_path: &str) -> Result<(), AnyError> {
         .ops(vec![
             crate::file::read::op_read_file::decl(),
             crate::file::write::op_write_file::decl(),
-            crate::file::remove::op_remove_file::decl(),
+            crate::file::remove::op_remove::decl(),
             crate::file::fetch::op_fetch::decl(),
+            crate::shell::mkdir::op_make_directory::decl(),
+            crate::shell::cd::op_current_directory::decl(),
+            crate::shell::ls::op_list_directory::decl(),
         ])
         .build();
     let mut js_runtime = deno_core::JsRuntime::new(deno_core::RuntimeOptions {

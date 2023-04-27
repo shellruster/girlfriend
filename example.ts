@@ -7,7 +7,6 @@ interface Foo {
 
 let content: string;
 
-// @ts-ignore
 content = await girlfriend.fetch(
   "https://raw.githubusercontent.com/phoenixifier/girlfriend/main/license",
 );

@@ -1,4 +1,5 @@
 mod file;
+mod shell;
 mod engine;
 mod typescript;
 
