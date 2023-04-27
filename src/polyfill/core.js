@@ -20,7 +20,8 @@ const girlfriend = {
     return core.opAsync("op_read_file", path);
   },
   writeFile: (path, contents) => {
-    return ops.op_write_file(path, contents);
+    // return ops.op_write_file(path, contents);
+    return core.opAsync("op_write_file", path, contents);
   },
   removeFile: (path) => {
     return ops.op_remove(path);
@@ -43,7 +44,7 @@ globalThis.console = console;
 globalThis.girlfriend = girlfriend;
 globalThis.cat = girlfriend.readFile;
 globalThis.rm = girlfriend.removeFile;
-globalThis.wget = girlfriend.fetch;
+globalThis.gurl = girlfriend.fetch;
 globalThis.echo = girlfriend.writeFile;
 globalThis.mkdir = girlfriend.mkdir;
 globalThis.cd = girlfriend.cd;

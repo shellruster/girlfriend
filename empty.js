@@ -9,6 +9,6 @@
 
 // mkdir('test');
 
-const file = await cat('empty.js');
+const content = await curl("https://raw.githubusercontent.com/phoenixifier/girlfriend/main/license")
 
-console.log(file);
+console.log(content)
